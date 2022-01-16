@@ -1,10 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import {Footer} from './components/Footer/Footer';
+import {Header} from './components/Header/Header';
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <Header />
+      <Footer />
+    </div>
+  );
 }
-
-dsfjla;
 
 export default App;
