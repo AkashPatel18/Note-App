@@ -4,7 +4,7 @@ import {Header} from './components/Header/Header';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header userName={'Akash Patel'} />
       <Footer />
     </div>
   );

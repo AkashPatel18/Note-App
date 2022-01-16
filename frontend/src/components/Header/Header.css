@@ -1,0 +1,53 @@
+.header {
+  height: 8vh;
+  background-color: #045de9;
+  background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+}
+
+.leftPortion,
+.rightPortion {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftPortion > div {
+  font-size: 3vh;
+}
+
+.rightPortion > div {
+  font-size: 2vh;
+  margin-left: 20px;
+}
+
+.title {
+  font-size: 3vh;
+}
+
+.searchBar {
+  margin-left: 20px;
+  display: flex;
+}
+
+.search {
+  border-radius: 30px;
+  height: 4vh;
+  padding: 10px;
+  width: 25vw;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
