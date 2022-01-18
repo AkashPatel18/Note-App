@@ -1,14 +1,19 @@
 import {Footer} from './components/Footer/Footer';
 import {Header} from './components/Header/Header';
 import LandingPage from './screens/LandingPage/LandingPage';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import MyNotes from './screens/MyNotes/MyNotes';
 
 function App() {
   return (
-    <div className="App">
-      <Header userName={'Akash Patel'} />
-      <LandingPage />
-      {/* <Footer /> */}
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<LandingPage />} exact />
+        <Route path="/notes" element={<MyNotes />} />
+      </Routes>
+      {/* <Header userName={'Akash Patel'} /> */}
+    </BrowserRouter>
   );
 }
 
