@@ -1,5 +1,6 @@
 import React from 'react';
 import './LandingPage.css';
+import {Link} from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -9,9 +10,11 @@ const LandingPage = () => {
         <p>One safe place for all your notes.</p>
       </div>
       <div className="buttons">
-        <div className="login">
-          <p>LogIn</p>
-        </div>
+        <Link to="/login">
+          <div className="login">
+            <p>LogIn</p>
+          </div>
+        </Link>
         <div className="signup">
           <p>SignUp</p>
         </div>

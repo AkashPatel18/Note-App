@@ -23,12 +23,6 @@ app.get('/notes', (req, res) => {
   res.json(notes);
 });
 
-app.get('/notes/:id', (req, res) => {
-  const note = notes.find((n) => n._id === req.params.id);
-  console.log(note);
-  res.json(note);
-});
-
 app.listen(PORT, () => {
   console.log(`hello ${PORT}`);
 });
