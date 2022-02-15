@@ -4,35 +4,31 @@ import './LoginScreen.css';
 import axios from 'axios';
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useDispatch, useSelector} from 'react-redux';
+import {login} from './../../actions/userActions';
 
-const LoginScreen = ({history}) => {
+export default function LoginScreen({history}) {
+  console.warn(history);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state).userLogin;
+
+  const {loading, userInfo, error} = userLogin;
+
+  console.warn(loading, 'loading');
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          'Content-type': 'application/json',
-        },
-      };
-      setLoading(true);
-      const {data} = await axios.post(
-        '/api/users/login',
-        {email, password},
-        config,
-      );
-      localStorage.setItem('userInfo', JSON.stringify(data));
-      setLoading(false);
-    } catch (e) {
-      setLoading(false);
-      setError(true);
-      toast('enter correct password and email');
-    }
+    dispatch(login(email, password));
   };
+
+  useEffect(() => {
+    if (userInfo) {
+      console.warn(history, 'jdlaj');
+      // history.push('/register');
+    }
+  }, [history, userInfo]);
 
   return (
     <div className="form">
@@ -67,6 +63,4 @@ const LoginScreen = ({history}) => {
       </div>
     </div>
   );
-};
-
-export default LoginScreen;
+}

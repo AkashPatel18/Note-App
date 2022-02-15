@@ -4,7 +4,7 @@ import Main from '../../components/Main.js/Main';
 import Note from '../../components/Note/Note';
 import './MyNotes.css';
 
-const MyNotes = () => {
+const MyNotes = ({history}) => {
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = async () => {

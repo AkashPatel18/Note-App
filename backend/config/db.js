@@ -7,7 +7,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       //    useCreateIndex: true,
     });
-    console.log(connection.connection.host, 'monog connected');
+    console.log(connection.connection.host, 'mongo connected');
   } catch (e) {
     console.log(e);
   }

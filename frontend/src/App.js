@@ -15,9 +15,8 @@ function App() {
         <Route path="/" element={<LandingPage />} exact />
         <Route path="/notes" element={<MyNotes />} />
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/register" element={RegisterScreen} />
       </Routes>
-      {/* <Header userName={'Akash Patel'} /> */}
     </BrowserRouter>
   );
 }
