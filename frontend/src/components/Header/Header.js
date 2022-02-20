@@ -1,8 +1,18 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 import './Header.css';
+import {useDispatch} from 'react-redux';
+import {logout} from '../../actions/userActions';
 
 export const Header = ({userName}) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogOutClick = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
   return (
     <header className="header">
       <nav>
@@ -19,6 +29,9 @@ export const Header = ({userName}) => {
             <div className="myNotes">My Notes</div>
           </Link>
           <div className="userInfo">{userName}</div>
+          <div className="myNotes" onClick={handleLogOutClick}>
+            LogOut
+          </div>
         </div>
       </nav>
     </header>

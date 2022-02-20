@@ -12,10 +12,10 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<LandingPage />} exact />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/notes" element={<MyNotes />} />
         <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={RegisterScreen} />
+        <Route path="/register" element={<RegisterScreen />} />
       </Routes>
     </BrowserRouter>
   );

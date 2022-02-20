@@ -1,11 +1,8 @@
 import React from 'react';
 import './LandingPage.css';
-import {Link} from 'react-router-dom';
-import {useHistory} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 const LandingPage = ({history}) => {
-  console.warn(history);
-  const his = useHistory();
   return (
     <div className="container">
       <div>
@@ -18,9 +15,11 @@ const LandingPage = ({history}) => {
             <p>LogIn</p>
           </div>
         </Link>
-        <div className="signup">
-          <p>SignUp</p>
-        </div>
+        <Link to="/register">
+          <div className="signup">
+            <p>SignUp</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
