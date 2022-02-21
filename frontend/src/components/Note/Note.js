@@ -4,7 +4,9 @@ import './Note.css';
 const Note = ({note}) => {
   return (
     <div className="note">
-      <div className="noteTitle"></div>
+      <div className="noteTitle">
+        <p>{note.title}</p>
+      </div>
       <div className="noteActions">
         <div className="noteEdit">
           <p>Edit</p>

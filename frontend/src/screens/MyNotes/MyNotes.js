@@ -3,27 +3,36 @@ import React, {useEffect, useState} from 'react';
 import Main from '../../components/Main.js/Main';
 import Note from '../../components/Note/Note';
 import './MyNotes.css';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchNotes} from './../../actions/notesActions';
+import {useNavigate} from 'react-router-dom';
 
 const MyNotes = ({history}) => {
-  const [notes, setNotes] = useState([]);
+  const dispatch = useDispatch();
+  const {notes, error, loading} = useSelector((state) => state).notes;
 
-  const fetchNotes = async () => {
-    const path = '/notes';
-    const data = await axios.get(path);
-    setNotes(data?.data);
-  };
+  const {userInfo} = useSelector((state) => state).userLogin;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchNotes();
-  }, []);
+    dispatch(fetchNotes());
+    if (!userInfo) {
+      navigate('/');
+    }
+  }, [userInfo]);
+
+  console.log(notes);
 
   return (
     <div>
-      <Main title={'helo akash patel'}>
+      <Main>
         <button className="createNote">
           <p>Create Note</p>
         </button>
-        {notes.map((note) => {
+        {loading && <p>Loading....</p>}
+        {error && <p>Error...</p>}
+        {notes?.map((note) => {
           return <Note note={note} key={note?._id} />;
         })}
       </Main>
