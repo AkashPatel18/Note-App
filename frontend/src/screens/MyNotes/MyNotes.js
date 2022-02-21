@@ -26,13 +26,13 @@ const MyNotes = ({history}) => {
 
   return (
     <div>
-      <Main>
-        <button className="createNote">
+      <Main title={'helo akash patel'}>
+        <button className="createNote" onClick={() => navigate('/create')}>
           <p>Create Note</p>
         </button>
         {loading && <p>Loading....</p>}
         {error && <p>Error...</p>}
-        {notes?.map((note) => {
+        {notes?.reverse().map((note) => {
           return <Note note={note} key={note?._id} />;
         })}
       </Main>

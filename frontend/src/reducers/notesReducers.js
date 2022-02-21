@@ -5,7 +5,11 @@ export const NOTE_CREATE_REQ = 'NOTE_CREATE_REQ';
 export const NOTE_CREATE_SUCCESS = 'NOTE_CREATE_SUCESS';
 export const NOTE_CREATE_FAIL = 'NOTE_CREATE_FAIL';
 
-export const notesReducer = (state, action) => {
+export const NOTE_UPDATE_REQ = 'NOTE_UPDATE_REQ';
+export const NOTE_UPDATE_SUCCESS = 'NOTE_UPDATE_SUCESS';
+export const NOTE_UPDATE_FAIL = 'NOTE_UPDATE_FAIL';
+
+export const notesReducer = (state = {notes: []}, action) => {
   switch (action.type) {
     case NOTES_REQUEST:
       return {loading: true};
@@ -18,12 +22,26 @@ export const notesReducer = (state, action) => {
       return {loading: true};
     }
     case NOTE_CREATE_SUCCESS: {
-      return {loading: true, notes: [...state.notes, ...[action.payload]]};
+      return {loading: false, notes: [...state.notes, ...[action.payload]]};
     }
 
     case NOTE_CREATE_FAIL: {
       return {loading: false, error: action.payload};
     }
+
+    default:
+      return state;
+  }
+};
+
+export const noteUpdateReducer = (state = {notes: []}, action) => {
+  switch (action.type) {
+    case NOTE_UPDATE_REQ:
+      return {loading: true};
+    case NOTE_UPDATE_SUCCESS:
+      return {loading: false, notes: action.payload};
+    case NOTE_UPDATE_FAIL:
+      return {loading: false, error: action.payload};
 
     default:
       return state;
