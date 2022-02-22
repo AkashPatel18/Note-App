@@ -28,8 +28,6 @@ export const fetchNotes = () => {
 
       const {data} = await axios.get(`api/notes`, config);
 
-      console.warn(data);
-
       dispatch({
         type: NOTES_SUCCESS,
         payload: data,
@@ -99,6 +97,8 @@ export const updateNote = (id, title, content, category) => {
         },
         config,
       );
+
+      console.log(data, 'dsjfls');
 
       dispatch({type: NOTE_UPDATE_SUCCESS, payload: data});
     } catch (e) {
