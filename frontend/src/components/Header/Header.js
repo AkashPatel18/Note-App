@@ -4,7 +4,7 @@ import './Header.css';
 import {useDispatch} from 'react-redux';
 import {logout} from '../../actions/userActions';
 
-export const Header = ({userName}) => {
+export const Header = ({userName, setSearch}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,7 +21,10 @@ export const Header = ({userName}) => {
             <div className="title">Note App</div>
           </Link>
           <div className="searchBar">
-            <input className="search" type={'search'}></input>
+            <input
+              onChange={(e) => setSearch(e.target.value)}
+              className="search"
+              type={'search'}></input>
           </div>
         </div>
         <div className="rightPortion">

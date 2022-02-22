@@ -8,14 +8,18 @@ import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import {CreateNote} from './screens/CreateNote/CreateNote';
 import {SingleNote} from './screens/SingleNote/SingleNote';
+import {useSelector} from 'react-redux';
+import React, {useState} from 'react';
 
 function App() {
+  const [search, setSearch] = useState('');
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header setSearch={setSearch} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/notes" element={<MyNotes />} />
+        <Route path="/notes" element={<MyNotes search={search} />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/create" element={<CreateNote />} />

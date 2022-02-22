@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchNotes} from './../../actions/notesActions';
 import {useNavigate} from 'react-router-dom';
 
-const MyNotes = ({history}) => {
+const MyNotes = ({search}) => {
   const dispatch = useDispatch();
   const {notes, error, loading} = useSelector((state) => state).notes;
 
@@ -32,9 +32,14 @@ const MyNotes = ({history}) => {
         </button>
         {loading && <p>Loading....</p>}
         {error && <p>Error...</p>}
-        {notes?.reverse().map((note) => {
-          return <Note note={note} key={note?._id} />;
-        })}
+        {notes
+          ?.reverse()
+          .filter((note) =>
+            note.title.toLowerCase().includes(search.toLowerCase()),
+          )
+          .map((note) => {
+            return <Note note={note} key={note?._id} />;
+          })}
       </Main>
     </div>
   );
