@@ -22,16 +22,14 @@ const MyNotes = ({search}) => {
     }
   }, [userInfo]);
 
-  console.log(notes);
-
   return (
     <div>
       <Main title={'helo akash patel'}>
         <button className="createNote" onClick={() => navigate('/create')}>
           <p>Create Note</p>
         </button>
-        {loading && <p>Loading....</p>}
-        {error && <p>Error...</p>}
+        {/* {loading && <p>Loading....</p>}
+        {error && <p>Error...</p>} */}
         {notes
           ?.reverse()
           .filter((note) =>
