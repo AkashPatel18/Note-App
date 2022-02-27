@@ -76,8 +76,7 @@ export const Header = ({userName, setSearch}) => {
               <div
                 style={{
                   display: 'flex',
-                  // border: '1px solid black',
-                  width: 250,
+                  width: 150,
                   justifyContent: 'space-between',
                 }}>
                 <LoginButton />
