@@ -6,7 +6,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {login} from './../../actions/userActions';
-import {Container, TextField} from '@mui/material';
+import {Container, TextField, CircularProgress} from '@mui/material';
 import {Submit} from '../../components/Buttons/Submit';
 
 export default function LoginScreen({history}) {
@@ -28,38 +28,11 @@ export default function LoginScreen({history}) {
     }
   }, [history, userInfo]);
 
+  if (error) {
+    toast('Please Enter Correct Password & Email');
+  }
+
   return (
-    // <div className="form">
-    //   <ToastContainer />
-    //   <form onSubmit={submitHandler}>
-    //     <div className="input-container">
-    //       <label>Email </label>
-    //       <input
-    //         type="text"
-    //         name="uname"
-    //         required
-    //         onChange={(e) => setEmail(e.target.value)}
-    //       />
-    //     </div>
-    //     <div className="input-container">
-    //       <label>Password </label>
-    //       <input
-    //         type="password"
-    //         name="pass"
-    //         required
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //     </div>
-    //     <div className="button-container">
-    //       {loading ? <p>...loading</p> : <input type="submit" />}
-    //     </div>
-    //   </form>
-    //   <div>
-    //     <p>
-    //       new here ? <Link to="/register">Register Here</Link>
-    //     </p>
-    //   </div>
-    // </div>
     <Container
       fixed
       style={{
@@ -67,10 +40,12 @@ export default function LoginScreen({history}) {
         justifyContent: 'center',
         maxWidth: 500,
         width: '90%',
-        border: '1px solid grey',
-        padding: '20px',
+        border: '1px solid rgba(0, 0, 0, .2)',
+        padding: '70px 40px',
+        marginTop: '100px',
       }}>
       {/* <form> */}
+      <ToastContainer />
       <div
         style={{
           display: 'flex',
@@ -82,19 +57,31 @@ export default function LoginScreen({history}) {
         <TextField
           id="standard-search"
           label="Email"
-          // type="search"
+          style={{marginTop: 30}}
           variant="standard"
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
           id="standard-search"
           label="Password"
-          // type="search"
+          style={{marginTop: 30}}
           variant="standard"
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* <Submit handleSubmit={submitHandler} /> */}
-        <p onClick={submitHandler}>hello</p>
+
+        {loading ? (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: 40,
+            }}>
+            <CircularProgress />
+          </div>
+        ) : (
+          <Submit handleSubmit={submitHandler} />
+        )}
       </div>
       {/* </form> */}
     </Container>

@@ -34,7 +34,7 @@ export const login = (email, password) => {
     } catch (e) {
       dispatch({
         type: USER_LOGIN_FAIL,
-        payload: e.message,
+        payload: true,
       });
     }
   };

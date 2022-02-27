@@ -3,6 +3,9 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
 export const Submit = ({handleSubmit}) => {
-  console.warn(handleSubmit, 'in');
-  return <Button onClick={handleSubmit}>Submit</Button>;
+  return (
+    <Button onClick={handleSubmit} style={{marginTop: 30}}>
+      Submit
+    </Button>
+  );
 };
