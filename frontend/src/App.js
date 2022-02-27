@@ -15,17 +15,18 @@ function App() {
   const [search, setSearch] = useState('');
 
   return (
-    <BrowserRouter>
-      <Header setSearch={setSearch} />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/notes" element={<MyNotes search={search} />} />
-        <Route path="/login" element={<LoginScreen />} />
-        <Route path="/register" element={<RegisterScreen />} />
-        <Route path="/create" element={<CreateNote />} />
-        <Route path="/note/:id" element={<SingleNote />} />
-      </Routes>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Header setSearch={setSearch} />
+    //   <Routes>
+    //     <Route path="/" element={<LandingPage />} />
+    //     <Route path="/notes" element={<MyNotes search={search} />} />
+    //     <Route path="/login" element={<LoginScreen />} />
+    //     <Route path="/register" element={<RegisterScreen />} />
+    //     <Route path="/create" element={<CreateNote />} />
+    //     <Route path="/note/:id" element={<SingleNote />} />
+    //   </Routes>
+    // </BrowserRouter>
+    <h1 className="text-3xl font-bold underline">Hello world!</h1>
   );
 }
 

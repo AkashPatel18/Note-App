@@ -28,6 +28,8 @@ const MyNotes = ({search}) => {
         <button className="createNote" onClick={() => navigate('/create')}>
           <p>Create Note</p>
         </button>
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+
         {/* {loading && <p>Loading....</p>}
         {error && <p>Error...</p>} */}
         {notes
