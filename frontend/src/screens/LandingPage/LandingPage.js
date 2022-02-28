@@ -32,7 +32,7 @@ const LandingPage = ({}) => {
       </div>
       {userInfo ? (
         <div style={{display: 'flex', justifyContent: 'center', marginTop: 60}}>
-          <Button onClick={() => navigate('profile')}>Profile</Button>
+          {/* <Button onClick={() => navigate('profile')}>Profile</Button> */}
           <Button onClick={() => navigate('notes')}>Notes</Button>
           <Button onClick={() => navigate('create')}>Create Note</Button>
           <Button onClick={handleLogOut}>logOut</Button>
