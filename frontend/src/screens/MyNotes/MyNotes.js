@@ -6,6 +6,7 @@ import './MyNotes.css';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchNotes} from './../../actions/notesActions';
 import {useNavigate} from 'react-router-dom';
+import {Container, Button} from '@mui/material';
 
 const MyNotes = ({search}) => {
   const dispatch = useDispatch();
@@ -23,15 +24,25 @@ const MyNotes = ({search}) => {
   }, [userInfo]);
 
   return (
-    <div>
-      <Main title={'helo akash patel'}>
-        <button className="createNote" onClick={() => navigate('/create')}>
-          <p>Create Note</p>
-        </button>
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
-        {/* {loading && <p>Loading....</p>}
-        {error && <p>Error...</p>} */}
+    <Container
+      fixed
+      style={{
+        // border: '1px solid blue',
+        width: 700,
+        maxWidth: '90%',
+        justifyContent: 'center',
+        // display: 'flex',
+      }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: 20,
+          marginBottom: 20,
+        }}>
+        <Button onClick={() => navigate('/create')}>Create Note</Button>
+      </div>
+      <Container style={{display: 'flex', flexDirection: 'column'}}>
         {notes
           ?.reverse()
           .filter((note) =>
@@ -40,8 +51,8 @@ const MyNotes = ({search}) => {
           .map((note) => {
             return <Note note={note} key={note?._id} />;
           })}
-      </Main>
-    </div>
+      </Container>
+    </Container>
   );
 };
 

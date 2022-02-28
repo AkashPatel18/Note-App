@@ -69,7 +69,18 @@ export const Header = ({userName, setSearch}) => {
                 <Input
                   type={'search'}
                   onChange={(e) => setSearch(e.target.value)}
+                  label="hi"
+                  placeholder="🔍 search"
                 />
+
+                {/* <TextField
+                  label="I am a really really long green TextField label"
+                  type={'search'}
+                  onChange={(e) => setSearch(e.target.value)}
+                  InputLabelProps={{
+                    style: {color: '#fff'},
+                  }}
+                /> */}
                 {/* <Avatar /> */}
               </div>
             ) : (
