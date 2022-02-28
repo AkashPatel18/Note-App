@@ -23,7 +23,7 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/create" element={<CreateNote />} />
-        <Route path="/note/:id" element={<SingleNote />} />
+        <Route path="/:id" element={<SingleNote />} />
       </Routes>
     </BrowserRouter>
   );

@@ -85,6 +85,8 @@ export const updateNote = (id, title, content, category) => {
       const config = {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
+          'Access-Control-Allow-Origin': '*',
+          userid: userInfo._id,
         },
       };
 

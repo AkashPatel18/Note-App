@@ -51,7 +51,7 @@ const Note = ({note}) => {
         </Typography>
       </CardContent>
       <CardActions style={{display: 'flex', justifyContent: 'flex-end'}}>
-        <Button size="small" onClick={() => navigate(`/note/${note._id}`)}>
+        <Button size="small" onClick={() => navigate(`/${note._id}`)}>
           {' '}
           Edit
         </Button>
