@@ -44,7 +44,7 @@ const Note = ({note}) => {
           {note.content}
         </Typography> */}
         <Typography
-          style={{marginBottom: 15, marginTop: 15}}
+          style={{marginBottom: 5, marginTop: 15, fontSize: 12}}
           sx={{mb: 1.5}}
           color="text.secondary">
           -Created On {time[0]}

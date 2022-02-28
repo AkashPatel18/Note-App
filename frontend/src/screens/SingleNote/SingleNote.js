@@ -12,6 +12,7 @@ import {
   Button,
 } from '@mui/material';
 import ReactMarkdowm from 'react-markdown';
+import {updateNote} from './../../actions/notesActions';
 
 export const SingleNote = () => {
   const {id} = useParams();
@@ -28,6 +29,10 @@ export const SingleNote = () => {
   const [content, setContent] = useState(note.content);
   const [category, setCategory] = useState(note.category);
   const [date, setDate] = useState();
+
+  const submitHandler = () => {
+    dispatch(updateNote(id, title, content, category));
+  };
 
   return (
     <Container
@@ -69,7 +74,7 @@ export const SingleNote = () => {
           onChange={(e) => setCategory(e.target.value)}
           style={{marginTop: 20, marginBottom: 20}}
         />
-        <Button onClick={() => dispatch()}>Update Note</Button>
+        <Button onClick={submitHandler}>Update Note</Button>
       </FormControl>
     </Container>
   );
