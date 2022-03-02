@@ -4,9 +4,10 @@ import Main from '../../components/Main.js/Main';
 import Note from '../../components/Note/Note';
 import './MyNotes.css';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchNotes} from './../../actions/notesActions';
+import {fetchNotes, deleteNoteAction} from './../../actions/notesActions';
 import {useNavigate} from 'react-router-dom';
 import {Container, Button} from '@mui/material';
+import {ToastContainer, toast} from 'react-toastify';
 
 const MyNotes = ({search}) => {
   const dispatch = useDispatch();
@@ -16,12 +17,22 @@ const MyNotes = ({search}) => {
 
   const navigate = useNavigate();
 
+  const {success} = useSelector((state) => state).noteDelete;
+
   useEffect(() => {
     dispatch(fetchNotes());
     if (!userInfo) {
       navigate('/');
     }
-  }, [userInfo]);
+
+    if (success) {
+      toast('Note Deleted.!');
+    }
+  }, [userInfo, success]);
+
+  const handleDelete = (id) => {
+    dispatch(deleteNoteAction(id));
+  };
 
   return (
     <Container
@@ -33,6 +44,7 @@ const MyNotes = ({search}) => {
         justifyContent: 'center',
         // display: 'flex',
       }}>
+      <ToastContainer />
       <div
         style={{
           display: 'flex',
@@ -49,7 +61,9 @@ const MyNotes = ({search}) => {
             note.title.toLowerCase().includes(search.toLowerCase()),
           )
           .map((note) => {
-            return <Note note={note} key={note?._id} />;
+            return (
+              <Note note={note} key={note?._id} handleDelete={handleDelete} />
+            );
           })}
       </Container>
     </Container>

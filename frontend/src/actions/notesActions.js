@@ -7,6 +7,9 @@ import {
   NOTE_CREATE_SUCCESS,
   NOTES_FAIL,
   NOTE_UPDATE_SUCCESS,
+  NOTES_DELETE_FAIL,
+  NOTES_DELETE_REQUEST,
+  NOTES_DELETE_SUCCESS,
 } from '../reducers/notesReducers';
 import {NOTE_UPDATE_REQ, NOTE_UPDATE_FAIL} from './../reducers/notesReducers';
 
@@ -107,4 +110,40 @@ export const updateNote = (id, title, content, category) => {
       dispatch({type: NOTE_UPDATE_FAIL, payload: e});
     }
   };
+};
+
+export const deleteNoteAction = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: NOTES_DELETE_REQUEST,
+    });
+
+    const {
+      userLogin: {userInfo},
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+        'Access-Control-Allow-Origin': '*',
+        userid: userInfo._id,
+      },
+    };
+
+    const {data} = await axios.delete(`/api/notes/${id}`, config);
+
+    dispatch({
+      type: NOTES_DELETE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: NOTES_DELETE_FAIL,
+      payload: message,
+    });
+  }
 };

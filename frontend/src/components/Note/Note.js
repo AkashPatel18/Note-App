@@ -9,12 +9,19 @@ import Chip from '@mui/material/Chip';
 import ReactMarkdowm from 'react-markdown';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
+import {useDispatch} from 'react-redux';
+import {deleteNoteAction} from './../../actions/notesActions';
 
-const Note = ({note}) => {
+const Note = ({note, handleDelete}) => {
   const navigate = useNavigate();
-  console.log(note);
 
   const time = note.createdAt.split('T');
+
+  const dispatch = useDispatch();
+
+  // const handleDelete = () => {
+  //   dispatch(deleteNoteAction(note._id));
+  // };
 
   return (
     <Card
@@ -25,6 +32,8 @@ const Note = ({note}) => {
         marginBottom: 20,
         marginTop: 20,
         flexDirection: 'column',
+        background: '#FAF9F6',
+        boxShadow: '10px 5px 5px #cccccc',
       }}
       variant={'elevation'}>
       <CardContent>
@@ -55,7 +64,10 @@ const Note = ({note}) => {
           {' '}
           Edit
         </Button>
-        <Button size="small" color="error">
+        <Button
+          size="small"
+          color="error"
+          onClick={() => handleDelete(note._id)}>
           Delete
         </Button>
       </CardActions>
